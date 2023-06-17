@@ -1,0 +1,43 @@
+<header th:fragment="header">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" th:href="@{/airport/list}">
+      Master Information
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="topNavbar">
+      <ul class="navbar-nav">
+      	<!-- A menu link to lists airport  -->
+       
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/passenger/list}">Passengers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/checkpoint1/list}">Checkpoints</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/flight/list}">Flights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/airport/list}">Airports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/luggage/list}">Luggages</a>
+        </li>
+        
+        
+        <!-- A menu link to add a new checkpoint-->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/checkpoint1/0}">Add new Checkpoint</a>
+        </li>
+        
+          <!-- A menu link to add a new passenger-->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/passenger/0}">Add new Passenger</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+</header>
