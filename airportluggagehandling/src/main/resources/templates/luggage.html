@@ -56,22 +56,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="luggage : ${luggages}">
-            <th scope="row">[[${luggage.luggageId}]]</th>
-            <td>[[${luggage.getPassenger().getPassengerId()}]]</td>
-
-            <td>
-              <!-- A link to edit an luggage -->
-              <a th:href="@{'/passenger/' + ${luggage.luggageId}}" 
-              	title="Edit this luggage"
-                class="fa-regular fa-pen-to-square icon-dark"></a>
-              &nbsp;>
-              
-              <!-- A link to delete an luggage -->
-              <a th:href="@{'/passenger/delete/' + ${luggage.luggageId}}" 
-              th:luggageId="${luggage.luggageId}" id="btnDelete"
-                title="Delete this luggage" 
-                class="fa-regular fa-trash-can icon-dark btn-delete"></a> 
+		<tr th:each="luggage : ${luggages}">
+		  <th scope="row">[[${luggage.luggageId}]]</th>
+		  <td>[[${luggage.getPassenger()?.getPassengerId()}]]</td>
+		
+		  <td>
+		    <!-- A link to edit a luggage -->
+		    <a th:href="@{'/luggage/' + ${luggage.luggageId}}/edit"
+		      title="Edit this luggage"
+		      class="fa-regular fa-pen-to-square icon-dark"></a>
+		    &nbsp;
+		
+		    <!-- A link to delete a luggage -->
+		    <a th:href="@{'/luggage/delete/' + ${luggage.luggageId}}"
+		      th:attr="data-luggage-id=${luggage.luggageId}" id="btnDelete"
+		      title="Delete this luggage"
+		      class="fa-regular fa-trash-can icon-dark btn-delete"></a>
+		  </td>
+		</tr>
 
             </td> 
           </tr>

@@ -20,52 +20,57 @@
     ter">[[${pageTitle}]]</h2>
 
     <div class="my-3">
-      <form th:action="@{/passenger/save}" method="post" enctype="multipart/form-data" th:object="${Passenger}"
+      <form th:action="@{/luggage/save}" method="post" enctype="multipart/form-data" th:object="${Flight}"
         style="max-width: 550px; margin: 0 auto">
 
-        <input type="hidden" th:field="*{passengerId}" />
+        <input type="hidden" th:field="*{flightId}" />
 
         <div class="p-3">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="Name">Name</label>
+            <label class="col-sm-3 col-form-label" for="DepartureTime">Departure Time</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{Name}" required minlength="0" maxlength="50" class="form-control"
-                id="Name" />
+              <input type="time" th:field="*{DepartureTime}" required minlength="0" maxlength="50" class="form-control"
+                id="departureTime" />
             </div>
           </div>
 
+			
+		<div class="p-3">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="Email">Email</label>
+            <label class="col-sm-3 col-form-label" for="ArrivalTime">Arrival Time</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{Email}" minlength="8" maxlength="50" class="form-control"
-                id="Email" />
+              <input type="time" th:field="*{ArrivalTime}" required minlength="0" maxlength="50" class="form-control"
+                id="arrivalTime" />
             </div>
           </div>
           
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="Phone Number">PhoneNumber</label>
-            <div class="col-sm-9">
-              <input type="text" th:field="*{PhoneNumber}" minlength="10" maxlength="12" class="form-control"
-                id="PhoneNumber" />
-            </div>
-          </div>
-          
+           <div class="p-3">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="Gender">Gender</label>
+            <label class="col-sm-3 col-form-label" for="DepartureDate">Departure Date</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{Gender}" minlength="0" maxlength="3" class="form-control"
-                id="Gender" />
+              <input type="date" th:field="*{DepartureDate}" required minlength="0" maxlength="50" class="form-control"
+                id="departureDate" />
             </div>
           </div>
+
+			
+		<div class="p-3">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="ArrivalDate">Arrival Date</label>
+            <div class="col-sm-9">
+              <input type="date" th:field="*{ArrivalDate}" required minlength="0" maxlength="50" class="form-control"
+                id="arrivalDate" />
+            </div>
+          </div>
+
     
            <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="flight">Flight Id</label>
+            <label class="col-sm-3 col-form-label" for="airport">Airport Id</label>
             <div class="col-sm-9">
-              <input type="text" th:field="*{flight}" minlength="1" maxlength="3" class="form-control"
-                id="flight" />
+              <input type="text" th:field="*{airport}" minlength="1" maxlength="3" class="form-control"
+                id="airport" />
             </div>
           </div>
-          
 
           <div class="text-center">
             <input type="submit" value="Save" class="btn btn-primary btn-sm mr-2" />
@@ -80,7 +85,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
       $("#btnCancel").on("click", function () {
-        window.location = "[[@{/passenger/list}]]";
+        window.location = "[[@{/flight/list}]]";
       });
     });
   </script>

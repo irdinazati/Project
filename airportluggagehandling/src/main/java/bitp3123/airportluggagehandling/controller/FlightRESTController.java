@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import bitp3123.airportluggagehandling.model.Flight;
+import bitp3123.airportluggagehandling.model.Luggage;
 import bitp3123.airportluggagehandling.repository.FlightRepository;
 
 
@@ -33,7 +34,7 @@ public class FlightRESTController {
 	@Autowired
 	private FlightRepository flightRepository;
 	
-	// delete order type record based on Id
+	// delete flight based on Id
 	@DeleteMapping("{flightId}")
 	public ResponseEntity<HttpStatus> deleteFlight(@PathVariable long flightId)
 	{

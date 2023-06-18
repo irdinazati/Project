@@ -25,14 +25,6 @@ public class PassengerRESTController {
 	@Autowired
 	private PassengerRepository passengerRepository;
 	
-	@DeleteMapping("{passengerId}")
-	public ResponseEntity<HttpStatus> deletePassenger(@PathVariable long PassengerId)
-	{
-		passengerRepository.deleteById(PassengerId);
-		
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
 	@GetMapping
 	public List<Passenger> getPassenger()
 	{
@@ -57,6 +49,14 @@ public class PassengerRESTController {
 	public Passenger updatePassenger (@RequestBody Passenger passenger)
 	{
 		return passengerRepository.save(passenger);
+	}
+	
+	// delete flight based on Id
+	@DeleteMapping("{passengerId}")
+	public ResponseEntity<HttpStatus> deleteFlight(@PathVariable long passengerId)
+	{
+		passengerRepository.deleteById(passengerId);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

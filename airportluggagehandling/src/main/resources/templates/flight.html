@@ -67,7 +67,7 @@
             <td>[[${flight.arrivalTime}]]</td>
             <td>[[${flight.departureDate}]]</td>
             <td>[[${flight.arrivalDate}]]</td>
-            <td>[[${flight.getAirport().getAirportId()}]]</td>
+            <td>[[${flight.getAirport()?.getAirportId()}]]</td>
             <td>
               <!-- A link to edit an flight -->
               <a th:href="@{'/flight/' + ${flight.flightId}}" 

@@ -60,20 +60,6 @@
           <tr th:each="airport : ${airports}">
             <th scope="row">[[${airport.airportId}]]</th>
             <td>[[${airport.airportName}]]</td>
-            <td>
-              <!-- A link to edit an airport -->
-              <a th:href="@{'/airport/' + ${airport.airportId}}" 
-              	title="Edit this airport"
-                class="fa-regular fa-pen-to-square icon-dark"></a>
-              &nbsp; >
-              
-              <!-- A link to delete an airport -->
-              <a th:href="@{'/airport/delete/' + ${airport.airportId}}" 
-              th:airportCode="${airport.airportName}" id="btnDelete"
-                title="Delete this airport" 
-                class="fa-regular fa-trash-can icon-dark btn-delete"></a>
-
-            </td> 
           </tr>
         </tbody>
       </table>

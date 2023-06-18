@@ -32,13 +32,13 @@ public class LuggageRESTController {
 	@Autowired
 	private LuggageRepository luggageRepository;
 	
-	// delete order type record based on Id
-	@DeleteMapping("{lggageId}")
-	public ResponseEntity<HttpStatus> deleteLuggage(@PathVariable long luggageId)
-	{
-		luggageRepository.deleteById(luggageId);
-		return new ResponseEntity<>(HttpStatus.OK);
+	// delete flight based on Id
+	@DeleteMapping("{luggageId}")
+	public ResponseEntity<HttpStatus> deleteLuggage(@PathVariable long luggageId) {
+	    luggageRepository.deleteById(luggageId);
+	    return new ResponseEntity<>(HttpStatus.OK);
 	}
+
 
 	// retrieve all order types detail
 	@GetMapping

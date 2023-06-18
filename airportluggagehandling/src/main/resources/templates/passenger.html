@@ -66,10 +66,10 @@
             <td>[[${passenger.Email}]]</td>
             <td>[[${passenger.PhoneNumber}]]</td>
             <td>[[${passenger.Gender}]]</td>
-            <td>[[${passenger.getFlight().getFlightId()}]]</td>
+            <td>[[${passenger.getFlight()?.getFlightId()}]]</td>
 
             <td>
-              <!-- A link to edit an airport -->
+              <!-- A link to edit an passenger -->
               <a th:href="@{'/passenger/' + ${passenger.passengerId}}" 
               	title="Edit this passenger"
                 class="fa-regular fa-pen-to-square icon-dark"></a>
@@ -124,7 +124,7 @@
 
         passengerName = link.attr("Name");
         $("#yesBtn").attr("href", link.attr("href"));
-        $("#confirmText").html("Do you want to delete  \<strong\>" + name + "\<\/strong\>?");
+        $("#confirmText").html("Do you want to delete <strong>" + name + "</strong>?");
         $("#confirmModal").modal();
       });
 

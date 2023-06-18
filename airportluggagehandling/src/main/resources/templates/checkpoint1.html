@@ -59,26 +59,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="checkpoint1 : ${checkpoints1}">
-            <th scope="row">[[${checkpoint1.getCheckpoint1Id()}]]</th>
-            <td>[[${checkpoint1.getCheckpointDate()}]]</td>
-            <td>[[${checkpoint1.getCheckpointTime()}]]</td>
-            <td>[[${checkpoint1.getLuggage().getLuggageId()}]]</td>
-            <td>[[${checkpoint1.getPassenger().getPassengerId()}]]</td>
-            <td>
-              <!-- A link to edit an order type -->
-              < <a th:href="@{'/checkpoint1/' + ${checkpoint1.Checkpoint1Id}}" 
-              	title="Edit this checkpoint"
-                class="fa-regular fa-pen-to-square icon-dark"></a>
-              &nbsp; >
-              
-              <!-- A link to delete an order type -->
-              <a th:href="@{'/checkpoint1/delete/' + ${checkpoint1.Checkpoint1Id}}" 
-              <h:checkpointName="${checkpoint1.CheckpointName}" id="btnDelete"
-                title="Delete this checkpoint" 
-                class="fa-regular fa-trash-can icon-dark btn-delete"></a>
+		<tr th:each="checkpoint1 : ${checkpoints1}">
+		  <th scope="row">[[${checkpoint1.getCheckpoint1Id()}]]</th>
+		  <td>[[${checkpoint1.getCheckpointDate()}]]</td>
+		  <td>[[${checkpoint1.getCheckpointTime()}]]</td>
+		  <td>[[${checkpoint1.getLuggage()?.getLuggageId()}]]</td>
+		  <td>[[${checkpoint1.getPassenger()?.getPassengerId()}]]</td>
+		  <td>
+		    <!-- A link to edit a checkpoint -->
+		    <a th:href="@{'/checkpoint1/' + ${checkpoint1.getCheckpoint1Id()}}"
+		      title="Edit this checkpoint"
+		      class="fa-regular fa-pen-to-square icon-dark"></a>
+		    &nbsp;
+		    <!-- A link to delete a checkpoint -->
+		    <a th:href="@{'/checkpoint1/delete/' + ${checkpoint1.getCheckpoint1Id()}}"
+		      title="Delete this checkpoint" 
+		      class="fa-regular fa-trash-can icon-dark btn-delete"></a>
+		  </td> 
 
-            </td> 
+
           </tr>
         </tbody>
       </table>
@@ -113,25 +112,26 @@
 
   <div th:replace="fragments/footer :: footer"></div>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $(".btn-delete").on("click", function (e) {
-        e.preventDefault();
-        link = $(this);
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(".btn-delete").on("click", function (e) {
+      e.preventDefault();
+      var link = $(this);
 
-        checkpointId = link.attr("CheckpointId");
-        $("#yesBtn").attr("href", link.attr("href"));
-        $("#confirmText").html("Do you want to delete the  \<strong\>" + CheckpointId + "\<\/strong\>?");
-        $("#confirmModal").modal();
-      });
-
-      $("#btnClear").on("click", function (e) {
-        e.preventDefault();
-        $("#keyword").text("");
-        window.location = "[[@{/checkpoint1/list}]]";
-      });
+      var checkpointId = link.attr("th:checkpoint1Id");
+      $("#yesBtn").attr("href", link.attr("href"));
+      $("#confirmText").html("Do you want to delete the <strong>" + checkpointId + "</strong>?");
+      $("#confirmModal").modal();
     });
-  </script>
+
+    $("#btnClear").on("click", function (e) {
+      e.preventDefault();
+      $("#keyword").val("");
+      window.location.href = "/checkpoint1/list";
+    });
+  });
+</script>
+
   
   
 

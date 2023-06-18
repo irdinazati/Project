@@ -43,31 +43,32 @@ public class FlightMenuController {
 		return "flight";
 	}
 	
-	@RequestMapping ("/flight/save")
-	public String updateFlight (@ModelAttribute Flight flight) {
-		
-	
+	@RequestMapping("/flight/save")
+	public String updateFlight (@ModelAttribute Flight flight)
+	{
+		// Create a new RestTemplate
 		RestTemplate restTemplate = new RestTemplate();
+		
+		// Create request body
 		HttpEntity<Flight> request = new HttpEntity<Flight>(flight);
 		
 		String flightResponse = "";
 		
-		if (flight.getFlightId()>0)
+		if (flight.getFlightId() > 0)
 		{
-			// This block update an new order type and 
-			
-			// Send request as PUT
+			// This block update an new order type and send request as PUT
 			restTemplate.put(defaultURI, request, Flight.class);
-		} else {
-			// This block add a new order type
-			
-			//send request as POST
+		}
+		else 
+		{
+			// This block ass a new passenger and send request as POST
 			flightResponse = restTemplate.postForObject(defaultURI, request, String.class);
+			
 		}
 		
 		System.out.println(flightResponse);
 		
-		// Redirect request to display a list of order type
+		// Redirect request to display a list of passenger
 		return "redirect:/flight/list";
 	}
 	
@@ -92,21 +93,27 @@ public class FlightMenuController {
 		}
 		
 		//Attach value to pass to front end
-		model.addAttribute("flight", flight);
+		model.addAttribute("Flight", flight);
 		model.addAttribute("pageTitle", pageTitle);
 		
-		return "flighttypeinfo";
+		return "flightinfo";
 	}
 	
-	@RequestMapping ("/flight/delete/{flightId}")
-	public String deleteFlight(@PathVariable Integer flightId) {
-		
-		// Generate new URI, similar to the mapping in OrderTypeRESTController
+	/**
+	 * This method deletes an passenger
+	 * 
+	 * @param passengerID
+	 * @return
+	 */
+	@RequestMapping("/flight/delete/{flightId}")
+	public String deleteFlight(@PathVariable String flightId)
+	{
+		// Generate new URI, similar to the mapping in PassengerRESTController
 		String uri = defaultURI + "/{flightId}";
 		
-		//Send a DELETE request and attach the value of orderTypeId into URI
+		// Send a DELETE request and attach the value of orderTypeId into URI
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete(uri, Map.of("flightId", Integer.toString(flightId)));
+		restTemplate.delete(uri, Map.of("flightId",(flightId)));
 		
 		return "redirect:/flight/list";
 	}

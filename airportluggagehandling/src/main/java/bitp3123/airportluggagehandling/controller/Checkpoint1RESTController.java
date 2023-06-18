@@ -25,11 +25,11 @@ public class Checkpoint1RESTController {
 	@Autowired
 	private Checkpoint1Repository checkpoint1Repository;
 	
+	// delete flight based on Id
 	@DeleteMapping("{checkpoint1Id}")
-	public ResponseEntity<HttpStatus> deleteCheckpoint1(@PathVariable long Checkpoint1Id)
+	public ResponseEntity<HttpStatus> deleteCheckpoint1(@PathVariable long checkpoint1Id)
 	{
-		checkpoint1Repository.deleteById(Checkpoint1Id);
-		
+		checkpoint1Repository.deleteById(checkpoint1Id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

@@ -8,35 +8,39 @@
     </button>
     <div class="collapse navbar-collapse" id="topNavbar">
       <ul class="navbar-nav">
-      	<!-- A menu link to lists airport  -->
-       
+
+		<!-- Check-in button with submenus -->
+		<li class="nav-item dropdown">
+		  <a class="nav-link dropdown-toggle" href="#" id="checkInDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Check-in
+		  </a>
+		  <div class="dropdown-menu" aria-labelledby="checkInDropdown">
+		    <a class="dropdown-item dropdown-toggle" href="#" id="cp1Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		      Checkpoint 1 (CP1)
+		    </a>
+		    <div class="dropdown-menu" aria-labelledby="cp1Dropdown">
+		      <a class="dropdown-item" th:href="@{/passenger/0}">Add new Passenger</a>
+		      <a class="dropdown-item" th:href="@{/checkpoint1/0}">Add new Checkpoint 1</a>
+		      <a class="dropdown-item" th:href="@{/luggage/0}">Add new Luggage</a>
+		      <a class="dropdown-item" th:href="@{/flight/0}">Add new Flight</a>
+		      <a class="dropdown-item" th:href="@{/flight/list}">List of Flight</a>
+		      <a class="dropdown-item" th:href="@{/checkpoint1/list}">List of Checkpoint 1</a>
+		      <a class="dropdown-item" th:href="@{/passenger/list}">List of Passenger</a>
+		      <a class="dropdown-item" th:href="@{/luggage/list}">List of Luggage</a>
+		      <a class="dropdown-item" th:href="@{/airport/list}">List of Airport</a>
+		    </div>
+		    <a class="dropdown-item" href="#">Checkpoint 2 (CP2)</a>
+		    <a class="dropdown-item" href="#">Checkpoint 3 (CP3)</a>
+		    <a class="dropdown-item" href="#">Checkpoint 4 (CP4)</a>
+		  </div>
+		</li>
+
+        <!-- Tracking Sheet button -->
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/passenger/list}">Passengers</a>
+          <a class="nav-link" th:href="@{/tracking-sheet}">
+            Tracking Sheet
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/checkpoint1/list}">Checkpoints</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/flight/list}">Flights</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/airport/list}">Airports</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/luggage/list}">Luggages</a>
-        </li>
-        
-        
-        <!-- A menu link to add a new checkpoint-->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/checkpoint1/0}">Add new Checkpoint</a>
-        </li>
-        
-          <!-- A menu link to add a new passenger-->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/passenger/0}">Add new Passenger</a>
-        </li>
-        
       </ul>
     </div>
   </nav>

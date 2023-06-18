@@ -16,17 +16,17 @@ public class Luggage {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "LuggageId")
-		private String luggageId;
+		private int luggageId;
 
 	  @ManyToOne
 	  @JoinColumn(name = "PassengerId")
 	  private Passenger passenger;
 
-	public String getLuggageId() {
+	public int getLuggageId() {
 		return luggageId;
 	}
 
-	public void setLuggageId(String luggageId) {
+	public void setLuggageId(int luggageId) {
 		this.luggageId = luggageId;
 	}
 

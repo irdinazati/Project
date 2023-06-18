@@ -32,14 +32,6 @@ public class AirportRESTController {
 	@Autowired
 	private AirportRepository airportRepository;
 	
-	// delete order type record based on Id
-	@DeleteMapping("{airportId}")
-	public ResponseEntity<HttpStatus> deleteAirport(@PathVariable long airportId)
-	{
-		airportRepository.deleteById(airportId);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-
 	// retrieve all order types detail
 	@GetMapping
 	public List<Airport> getAirport()
@@ -56,18 +48,5 @@ public class AirportRESTController {
 		return airport;
 	}
 
-	// insert records for order type
-	@PostMapping
-	public Airport insertAirport(@RequestBody Airport airport)
-	{
-		return airportRepository.save(airport);
-	}
-
-	// update records for order type
-	@PutMapping
-	public Airport updateAirport(@RequestBody Airport airport)
-	{
-		return airportRepository.save(airport);
-	}
 	
 }

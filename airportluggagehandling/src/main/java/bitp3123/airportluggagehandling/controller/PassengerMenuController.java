@@ -19,7 +19,7 @@ import bitp3123.airportluggagehandling.model.Passenger;
 @Controller
 public class PassengerMenuController {
 	
-	private String defaultURI;
+	private String defaultURI = "http://localhost:8080/airportluggageapp/api/passengers";
 	
 	@GetMapping("/passenger/list")
 	public String getPassengers (Model model)
@@ -41,38 +41,41 @@ public class PassengerMenuController {
 		// Attach list to model as attribute 
 		model.addAttribute("passengers", passengerList);
 		
-		return "passengers";
+		return "passenger";
 		
 	}
 	
-	@RequestMapping("/passenger/save")
-	public String updatePassenger (@ModelAttribute Passenger passenger)
-	{
-		// Create a new RestTemplate
+	
+	@RequestMapping ("/passenger/save")
+	public String updatePassenger (@ModelAttribute Passenger passenger) {		
+	
+		//Create a new RestTemplate
 		RestTemplate restTemplate = new RestTemplate();
 		
-		// Create request body
+		//Create request body
 		HttpEntity<Passenger> request = new HttpEntity<Passenger>(passenger);
 		
 		String passengerResponse = "";
 		
-		if (passenger.getPassengerId() > 0)
-		{
-			// This block update an new order type and send request as PUT
+		if (passenger.getPassengerId()>0)
+		{	// This block update an new checkpoint and 
+			
+			// Send request as PUT
 			restTemplate.put(defaultURI, request, Passenger.class);
 		}
-		else 
-		{
-			// This block ass a new passenger and send request as POST
-			passengerResponse = restTemplate.postForObject(defaultURI, request, String.class);
 			
+		else 
+		{	//This block add a new checkpoint 
+			
+			//send request as POST
+				passengerResponse = restTemplate.postForObject(defaultURI, request, String.class);
+			}
+			
+			System.out.println(passengerResponse);
+			
+			// Redirect request to display a list of checkpoint
+			return "redirect:/passenger/list";
 		}
-		
-		System.out.println(passengerResponse);
-		
-		// Redirect request to display a list of passenger
-		return "redirect:/passenger/list";
-	}
 	
 	@GetMapping("/passenger/{passengerId}")
 	public String getPassenger (@PathVariable int passengerId, Model model) {
